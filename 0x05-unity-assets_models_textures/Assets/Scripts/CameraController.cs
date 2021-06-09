@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     public bool rotPlayer;
     void LateUpdate()
     {
-        if (rotPlayer && Input.GetKey(KeyCode.Mouse0))
+        if (rotPlayer && Input.GetKey(KeyCode.Mouse1))
         {
             Quaternion camTurnangle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotSpd, Vector3.up);
             offset = camTurnangle * offset;

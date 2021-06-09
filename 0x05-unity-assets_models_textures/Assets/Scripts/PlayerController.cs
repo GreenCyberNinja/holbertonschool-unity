@@ -21,7 +21,10 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-
+        if (rb.transform.position.y < -15)
+        {
+            rb.transform.position = new Vector3(0, 25, 0);
+        }
     }
     void FixedUpdate()
     {
