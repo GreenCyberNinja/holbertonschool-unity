@@ -8,18 +8,30 @@ public class CameraController : MonoBehaviour
     public Vector3 offset;
     public float smoSpd;
     public float rotSpd;
-    public bool rotPlayer;
+    public bool isInverted;
+    float vert;
+    float hor;
+
+    void Start ()
+    {
+        isInverted = System.Convert.ToBoolean(PlayerPrefs.GetString("yinvert"));
+    }
     void LateUpdate()
     {
-        if (rotPlayer && Input.GetKey(KeyCode.Mouse1))
+        vert = Input.GetAxis("Mouse Y");
+        hor = Input.GetAxis("Mouse X");
+        if (isInverted)
         {
-            Quaternion camTurnangle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotSpd, Vector3.up);
+            vert = -vert;
+        }
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            Quaternion camTurnangle = Quaternion.Euler(vert * rotSpd, hor * rotSpd, 0);
             offset = camTurnangle * offset;
         }
         Vector3 posDes = player.transform.position + offset;
         Vector3 smoPos = Vector3.Lerp(transform.position, posDes, smoSpd);
         transform.position = smoPos;
-        if (rotPlayer)
-            transform.LookAt(player.transform);
+        transform.LookAt(player.transform);
     }
 }
