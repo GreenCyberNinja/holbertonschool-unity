@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool isPaused;
     public float speed;
     public float jmpHeight;
     public float fallMul = 2.5f;
     public float midJspd;
     public float Grndspd;
+    public Vector3 reset;
 
     bool isGrounded;
     bool mdjmp;
@@ -23,12 +25,13 @@ public class PlayerController : MonoBehaviour
     {
         if (rb.transform.position.y < -15)
         {
-            rb.transform.position = new Vector3(0, 25, 0);
+            rb.transform.position = reset;
         }
     }
     void FixedUpdate()
     {
-        Move();
+        if (!isPaused)
+            Move();
     }
     void Move()
     {
