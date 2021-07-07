@@ -1,0 +1,1 @@
+file directory for unity project 0x07-unity-animation
