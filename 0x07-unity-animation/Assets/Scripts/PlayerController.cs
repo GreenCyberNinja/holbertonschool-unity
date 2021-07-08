@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
         if (rb.transform.position.y < -15)
         {
             rb.transform.position = reset;
+            animator.SetBool("Falling", true);
         }
     }
     void FixedUpdate()
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag == "ground")
         {
             isGrounded = true;
+            animator.SetBool("Falling", false);
             mdjmp = false;
             speed = Grndspd;
         }
