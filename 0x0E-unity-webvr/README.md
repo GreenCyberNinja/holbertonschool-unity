@@ -1,1 +1,1 @@
-project directory for Holberton 0x0E WebVR
+project directory for holberton project 0x0E WebVr

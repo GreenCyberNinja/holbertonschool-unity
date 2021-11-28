@@ -13,7 +13,6 @@ namespace WebXR
         LEFT,
         RIGHT
     };
-    
 
     [Serializable]
     public class WebXRControllerButton
@@ -73,7 +72,7 @@ namespace WebXR
                 WebXRControllerInput input = inputMap.inputs[i];
                 if (action == input.actionName)
                 {
-                    if (IsPresentutil.isPresent() && !input.unityInputIsButton)
+                    if (OUalt.isPresent() && !input.unityInputIsButton)
                     {
                         return Input.GetAxis(input.unityInputName);
                     }
@@ -92,7 +91,7 @@ namespace WebXR
 
         public bool GetButton(string action)
         {
-            if (IsPresentutil.isPresent())
+            if (OUalt.isPresent())
             {
                 foreach (WebXRControllerInput input in inputMap.inputs)
                 {
@@ -130,7 +129,7 @@ namespace WebXR
         public bool GetButtonDown(string action)
         {
             // Use Unity Input Manager when XR is enabled and WebXR is not being used (eg: standalone or from within editor).
-            if (IsPresentutil.isPresent())
+            if (OUalt.isPresent())
             {
                 foreach (WebXRControllerInput input in inputMap.inputs)
                 {
@@ -151,7 +150,7 @@ namespace WebXR
         public bool GetButtonUp(string action)
         {
             // Use Unity Input Manager when XR is enabled and WebXR is not being used (eg: standalone or from within editor).
-            if (IsPresentutil.isPresent())
+            if (OUalt.isPresent())
             {
                 foreach (WebXRControllerInput input in inputMap.inputs)
                 {
@@ -272,7 +271,7 @@ namespace WebXR
         void Update()
         {
             // Use Unity XR Input when enabled. When using WebXR, updates are performed onControllerUpdate.
-            if (!IsPresentutil.isPresent()) return;
+            if (!OUalt.isPresent()) return;
             
             SetVisible(true);
 
